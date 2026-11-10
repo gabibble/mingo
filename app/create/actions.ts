@@ -1,5 +1,11 @@
 "use server";
 
+import { randomInt } from "node:crypto";
+
+function generateGameKey(): string {
+    return randomInt(0, 100000).toString().padStart(5, "0");
+}
+
 export async function createGame(formData: FormData) {
 
     const title = String(formData.get('title')  ?? '').trim();
@@ -15,6 +21,9 @@ export async function createGame(formData: FormData) {
 
     if (terms.length !== termNumber) throw new Error(`There must be ${termNumber} terms`);
     
+    const gameKey = generateGameKey();
+    console.log(gameKey);
+
     console.log(title,terms)
     return terms;
 
