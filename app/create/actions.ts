@@ -23,8 +23,6 @@ export async function createGame(formData: FormData) {
     
     const gameKey = generateGameKey();
     console.log(gameKey);
-
     console.log(title,terms)
-    return terms;
 
 };
